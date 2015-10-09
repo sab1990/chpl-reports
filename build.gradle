@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'gs-batch-processing'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-batch")
+    compile 'org.hibernate:hibernate-entitymanager:5.0.1.Final'
+    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final'
+    compile 'org.postgresql:postgresql:9.4-1201-jdbc41'
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.jsoup:jsoup:1.8.2'
+
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
